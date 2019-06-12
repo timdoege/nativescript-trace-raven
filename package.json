@@ -1,7 +1,7 @@
 {
     "name": "nativescript-trace-raven",
     "version": "1.2.0",
-    "main": "src/index.js",
+    "files": ["src/*", "!src/node_modules", "!src/references.d.ts", "!src/tsconfig.json"],
     "scripts": {
       "prepare": "npm run build",
       "build": "cd ./src && npm run build"
