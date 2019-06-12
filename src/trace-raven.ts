@@ -17,11 +17,11 @@ declare var global: any;
 export class TraceRaven {
   private batteryPercent: number;
 
-  constructor(dsn: string, environment = "debug", enableAppBreadcrumbs = true) {
+  constructor(dsn: string, environment = "debug", release = "", enableAppBreadcrumbs = true) {
     if (dsn === undefined || dsn === "") {
       throw new Error("Sentry DSN string required to configure Raven TraceWriter");
     }
-    this.initRaven(dsn, environment, enableAppBreadcrumbs);
+    this.initRaven(dsn, environment, release, enableAppBreadcrumbs);
   }
 
   public write(message: string, category: string, type?: number): void {
@@ -39,7 +39,7 @@ export class TraceRaven {
     Raven.captureMessage(message, { level: <Raven.LogLevel>level, tags: { trace_category: category } });
   }
 
-  private initRaven(dsn: string, environment: string, enableAppBreadcrumbs: boolean) {
+  private initRaven(dsn: string, environment: string, release: string, enableAppBreadcrumbs: boolean) {
     Raven
       .config(dsn, {
         logger: 'nativescript',
@@ -49,6 +49,7 @@ export class TraceRaven {
           device_type: platform.device.deviceType,
           device_lang: platform.device.language,
         },
+        release: release,
         dataCallback: (data) => {
           // Enrich with additional context
           data.contexts = {
@@ -104,7 +105,7 @@ export class TraceRaven {
         this.initAutoCrumbs();
       }
 
-      this.initAppVersion();
+      this.initAppVersion(release);
       this.initBatteryStatus();
   }
 
@@ -151,12 +152,12 @@ export class TraceRaven {
     });
   }
 
-  private initAppVersion() {
+  private initAppVersion(release = '') {
     // Add app version tag (async)
     appversion.getVersionName()
       .then((version) => {
         Raven.setTagsContext({ app_version: version });
-        Raven.setRelease(version);
+        Raven.setRelease(release);
     });
   }
 

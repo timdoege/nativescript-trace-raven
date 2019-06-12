@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "nativescript-appversion": "^1.4.1",
-    "nativescript-orientation": "^2.2.0",
+    "nativescript-orientation": "^2.2.1",
     "nativescript-globalevents": "^1.2.1",
     "nativescript-dom": "^2.0.0",
     "raven-js": "^3.24.0"

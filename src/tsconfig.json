@@ -13,6 +13,7 @@
             "es2015.iterable"
         ],
         "baseUrl": ".",
+        // "outDir": "../dist",
         "paths": {
             "*": [
                 "./node_modules/tns-core-modules/*",

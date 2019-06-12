@@ -1,0 +1,11 @@
+{
+    "name": "nativescript-trace-raven",
+    "main": "src/index.js",
+    "scripts": {
+      "prepare": "npm run build",
+      "build": "cd ./src && npm run build"
+    }
+  }
+  
+
+  
