@@ -9,8 +9,8 @@ import { Page, ShownModallyData } from "ui/page";
 import { EventData } from "data/observable";
 let page = require("ui/page").Page; // Needed for global events
 let appversion = require("nativescript-appversion");
-let orientation = require('nativescript-orientation');
-require("nativescript-globalevents");
+let orientation = require('@proplugins/nativescript-orientation');
+require("@proplugins/nativescript-globalevents");
 
 declare var global: any;
 
@@ -172,7 +172,7 @@ export class TraceRaven {
     } else {
       app.ios.addNotificationObserver(UIDeviceBatteryLevelDidChangeNotification,
         (notification: NSNotification) => {
-            this.batteryPercent = utils.ios.getter(UIDevice, UIDevice.currentDevice).batteryLevel * 100;
+            this.batteryPercent = UIDevice.currentDevice.batteryLevel * 100;
         });
     }
   }

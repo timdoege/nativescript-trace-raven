@@ -8,7 +8,16 @@ To add the plug-in to a NativeScript project:
 
 `tns plugin add nativescript-trace-raven`
 
+IMPORTANT: Version 2+ is for NativeScript 6+ and uses the following plugins which currently require a subscription at
+https://proplugins.org/
+
+The reason is that this plugin uses the following now-ProPlugin hosted plugins:
+   * @proplugins/nativescript-dom (formerly https://www.npmjs.com/package/nativescript-dom)
+   * @proplugins/nativescript-globalevents (formerly https://www.npmjs.com/package/nativescript-globalevents)
+   * @proplugins/nativescript-orientation (formernly https://www.npmjs.com/package/nativescript-orientation)
+
 NOTE: To use this plug-in, a "DSN" key from [Sentry.io](https://sentry.io/welcome/) is required. This key is used to initialize the plug-in and send logs to a specific Sentry.io project.
+
 
 ## Usage
 
